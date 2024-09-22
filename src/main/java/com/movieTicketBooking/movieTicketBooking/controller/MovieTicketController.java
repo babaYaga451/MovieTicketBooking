@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/theater")
+@RequestMapping("/theater/movie")
 public class MovieTicketController {
 
   private final UserService userService;
@@ -26,29 +26,29 @@ public class MovieTicketController {
     this.userService = userService;
   }
 
-  @PostMapping("/movie")
+  @PostMapping
   public ResponseEntity<MovieDTO> createNewMovie(@Valid @RequestBody MovieDTO movie) {
     MovieDTO createdMovie = userService.createMovie(movie);
     return new ResponseEntity<>(createdMovie, HttpStatus.CREATED);
   }
 
-  @PostMapping("/movie/ticket/booking")
+  @PostMapping("/ticket/booking")
   public ResponseEntity<TicketDTO> bookMovieTicket(@Valid @RequestBody TicketDTO ticketRequest) {
     TicketDTO ticketDTO = userService.bookMovieTicket(ticketRequest);
     return new ResponseEntity<>(ticketDTO, HttpStatus.CREATED);
   }
 
-  @GetMapping("/movie/{movieId}")
+  @GetMapping("/{movieId}")
   public ResponseEntity<MovieDTO> getMovieDetails(@PathVariable Long movieId) {
     return new ResponseEntity<>(userService.getMovieById(movieId), HttpStatus.OK);
   }
 
-  @GetMapping("/movie/ticket/booking/{ticketId}")
+  @GetMapping("/ticket/booking/{ticketId}")
   public ResponseEntity<TicketDTO> getTicketDetails(@PathVariable Long ticketId) {
       return new ResponseEntity<>(userService.getTicketById(ticketId), HttpStatus.OK);
   }
 
-  @GetMapping("/movie/{movieId}/ticket")
+  @GetMapping("/{movieId}/ticket")
   public ResponseEntity<List<TicketDTO>> getAllMovieTickets(@PathVariable Long movieId) {
       return new ResponseEntity<>(userService.getTicketsByMovieId(movieId), HttpStatus.OK);
   }

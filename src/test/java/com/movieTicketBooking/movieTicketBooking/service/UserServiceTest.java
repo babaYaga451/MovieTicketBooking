@@ -146,7 +146,7 @@ class UserServiceTest {
   void getTicketsByMovieId_BadRequest() {
     when(movieRepo.findById(anyLong())).thenReturn(Optional.empty());
     InvalidMovieIdException ex = assertThrows(InvalidMovieIdException.class,
-        () -> userService.getMovieById(1L));
+        () -> userService.getTicketsByMovieId(1L));
     assertEquals(Constant.MOVIE_NOT_FOUND_WITH_ID +1L, ex.getMessage());
   }
 
