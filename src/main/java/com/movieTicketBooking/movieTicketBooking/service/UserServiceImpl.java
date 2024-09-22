@@ -39,7 +39,8 @@ public class UserServiceImpl implements UserService {
   public MovieDTO getMovieById(Long id) {
    return movieRepo.findById(id)
         .map(mapper::transform)
-        .orElseThrow(() -> new InvalidMovieIdException(MOVIE_NOT_FOUND_WITH_ID + id));
+        .orElseThrow(
+            () -> new InvalidMovieIdException(MOVIE_NOT_FOUND_WITH_ID + id));
   }
 
   @Override
@@ -58,7 +59,8 @@ public class UserServiceImpl implements UserService {
   public TicketDTO getTicketById(Long id) {
     return ticketRepo.findById(id)
         .map(mapper::transform)
-        .orElseThrow(() -> new InvalidTicketIdException(TICKET_NOT_FOUND_WITH_ID + id));
+        .orElseThrow(
+            () -> new InvalidTicketIdException(TICKET_NOT_FOUND_WITH_ID + id));
   }
 
   @Override
@@ -66,6 +68,7 @@ public class UserServiceImpl implements UserService {
     return movieRepo.findById(movieId)
         .map(MovieEntity::getTickets)
         .map(mapper::transformTicketDtoList)
-        .orElseThrow(() -> new InvalidMovieIdException(MOVIE_NOT_FOUND_WITH_ID + movieId));
+        .orElseThrow(
+            () -> new InvalidMovieIdException(MOVIE_NOT_FOUND_WITH_ID + movieId));
   }
 }

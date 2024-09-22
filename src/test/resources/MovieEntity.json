@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "title": "Avengers",
+  "director": "Admin",
+  "language": "English",
+  "year": 2007,
+  "tickets" : [
+    {
+      "id": 1,
+      "type": "VIP",
+      "unitPrice": 300,
+      "noOfTickets": 2,
+      "price": 600
+    }
+  ]
+}
