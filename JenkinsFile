@@ -9,5 +9,10 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Docker') {
+          steps {
+               sh 'docker image ls'
+          }
+        }
     }
 }
