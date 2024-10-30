@@ -1,10 +1,12 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven' // Make sure Maven is installed and named 'Maven' in Jenkins
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                sh 'mvn clean install'
             }
         }
     }
